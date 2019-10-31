@@ -9,11 +9,9 @@ vector<int> profits(1000);
 vector<int> weights(1000);
 int knapsackRecursive(int wcapacity, int i)
 {
-    cout <<"hey\n";
     //base case
     if(i >= n || wcapacity <= 0)
         {
-            cout <<"base";
             return 0;
         }
 
