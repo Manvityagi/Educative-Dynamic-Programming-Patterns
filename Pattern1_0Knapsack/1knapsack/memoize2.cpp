@@ -28,7 +28,7 @@ int knapsackRecursive(int wcapacity, int i, vector<vector<int>> dp)
             return exc;
         }
 
-    int inc = profits[i] + knapsackRecursive(wcapacity-profits[i],i+1,dp);
+    int inc = profits[i] + knapsackRecursive(wcapacity-weights[i],i+1,dp);
        
            dp[wcapacity][i] = max(inc,exc);
            return dp[wcapacity][i];

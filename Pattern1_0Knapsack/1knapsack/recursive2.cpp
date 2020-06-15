@@ -20,7 +20,7 @@ int knapsackRecursive(int wcapacity, int i)
     if(weights[i] >= wcapacity)
         return exc;
 
-    int inc = profits[i] + knapsackRecursive(wcapacity-profits[i],i+1);
+    int inc = profits[i] + knapsackRecursive(wcapacity-weights[i],i+1);
         return max(inc,exc);
 
 }

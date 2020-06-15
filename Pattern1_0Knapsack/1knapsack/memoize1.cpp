@@ -9,44 +9,42 @@ vector<int> profits(1000);
 vector<int> weights(1000);
 int knapsackRecursive(int ans, int i, vector<vector<int>> dp)
 {
-    //cout <<"hey\n";
+    /cout <<"hey\n";
     //base case
-    if(i >= n || ans >= wcapacity)
-        {
-          //  cout <<"base";
-            dp[ans][i] = ans;
-            return ans;
-        }
+    if (i >= n || ans >= wcapacity)
+    {
+        //  cout <<"base";
+        dp[ans][i] = ans;
+        return ans;
+    }
 
-    int exc = knapsackRecursive(ans,i+1,dp);
+    int exc = knapsackRecursive(ans, i + 1, dp);
     //include or exclude ith weight
-    if(ans + weights[i] >= wcapacity)
-        {
-           dp[ans][i] = exc;
-          return exc;
-        }
+    if (ans + weights[i] >= wcapacity)
+    {
+        dp[ans][i] = exc;
+        return exc;
+    }
 
-    int inc = knapsackRecursive(ans+profits[i],i+1,dp);
-     dp[ans][i] = max(inc,exc);
-        return dp[ans][i];
-
+    int inc = knapsackRecursive(ans + profits[i], i + 1, dp);
+    dp[ans][i] = max(inc, exc);
+    return dp[ans][i];
 }
 
 int main()
 {
     cin >> wcapacity;
     cin >> n;
-vector<vector<int>> dp(wcapacity+1, vector<int>(n,-1));
+    vector<vector<int>> dp(wcapacity + 1, vector<int>(n, -1));
     for (int i = 0; i < n; i++)
-        {
-            cout << i << "wtpro \n";
-            cin >> weights[i] >> profits[i];
-        }
+    {
+        cout << i << "wtpro \n";
+        cin >> weights[i] >> profits[i];
+    }
 
     //given W(s) , maximize profit
-    int maxProfit = knapsackRecursive(0,0,dp);
+    int maxProfit = knapsackRecursive(0, 0, dp);
     cout << maxProfit;
 
     return 0;
 }
-
